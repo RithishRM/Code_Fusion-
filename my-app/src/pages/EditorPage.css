@@ -1,0 +1,311 @@
+/* General Layout */
+.editor-page-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full viewport height */
+  background-color: #282c34; /* Dark background for the whole page */
+  color: #abb2bf;
+}
+
+.editor-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #21252b;
+  border-bottom: 1px solid #333;
+  color: #fff;
+}
+
+.room-info h2 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.room-info h2 span {
+  color: #61dafb;
+}
+
+.editor-nav button {
+  background-color: #61dafb;
+  color: #282c34;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 10px;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.editor-nav button:hover {
+  opacity: 0.9;
+}
+
+.editor-nav .leave-room-button {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+.editor-nav .download-button {
+  background-color: #28a745;
+  color: #fff;
+}
+
+/* Main Content Area (Sidebar + Editor Panel) */
+.editor-main-content {
+  flex: 1; /* Takes remaining vertical space */
+  display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: #21252b;
+  border-right: 1px solid #333;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar h3 {
+  color: #fff;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.file-list-container {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 15px;
+}
+
+.file-tree {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.file-tree li {
+  margin-bottom: 4px;
+}
+
+.file-item {
+  padding: 5px 10px; /* Adjusted padding */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  transition: background-color 0.2s ease;
+}
+
+.file-item:hover {
+  background-color: #3a3f4a;
+}
+
+.file-item.active {
+  background-color: #4a4f58; /* A bit darker for active state */
+  color: #fff; /* Ensure text is visible */
+}
+
+.file-item span {
+  margin-left: 5px;
+}
+
+.folder-node {
+  cursor: pointer;
+  font-weight: bold;
+  padding: 5px 0;
+  user-select: none;
+  display: flex; /* For icon alignment */
+  align-items: center;
+}
+
+.folder-node span {
+  margin-right: 6px;
+}
+
+.users-placeholder {
+  margin-top: auto; /* Pushes to the bottom */
+  border-top: 1px solid #333;
+  padding-top: 15px;
+}
+
+.users-placeholder ul {
+  list-style: none;
+  padding-left: 10px;
+  margin: 0;
+  font-size: 0.9em;
+}
+
+/* Editor Panel */
+.editor-panel {
+  flex: 1; /* Takes remaining horizontal space */
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  background-color: #1e1e1e; /* Editor background */
+}
+
+.file-meta-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  background-color: #21252b;
+  border-bottom: 1px solid #333;
+  flex-shrink: 0; /* Prevent it from shrinking */
+}
+
+.file-meta-bar h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1em;
+  flex: 1; /* Allows title to take up available space */
+}
+
+.language-dropdown {
+  padding: 4px 8px;
+  background-color: #3a3f4a;
+  color: #fff;
+  border: 1px solid #555;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.run-button {
+  background-color: #dc3545;
+  color: white;
+  padding: 8px 16px;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.run-button:hover {
+  background-color: #c82333;
+}
+
+/* Ace Editor Container */
+.ace-editor-container {
+  flex: 1; /* AceEditor container takes all available space above console */
+  display: flex; /* Make it a flex container to manage AceEditor */
+  position: relative; /* If AceEditor needs positioning context */
+}
+
+.ace-editor-wrapper {
+    /* AceEditor is rendered inside this wrapper to ensure it fills 100% height */
+    width: 100%;
+    height: 100%;
+    /* No explicit height here, AceEditor will inherit from parent */
+}
+
+/* Console Area */
+.console-container {
+  background-color: #1e1e1e;
+  color: limegreen;
+  padding: 10px 16px; /* Padding inside the console */
+  overflow: auto;
+  cursor: row-resize;
+  border-top: 1px solid #333;
+  flex-shrink: 0; /* Prevent it from shrinking */
+  display: flex;
+  flex-direction: column;
+}
+
+.console-container pre {
+  margin: 0; /* Remove default pre margin */
+  white-space: pre-wrap;
+  word-wrap: break-word; /* Ensure long lines wrap */
+  font-size: 13px;
+  line-height: 1.4;
+  padding-top: 5px; /* Small padding above output content */
+}
+
+.console-container strong {
+  color: limegreen;
+  display: block; /* Make it a block element */
+  margin-bottom: 5px; /* Space between header and output */
+  font-weight: bold;
+}
+
+/* Initial State (Before project load) */
+.initial-state-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #000; /* Pitch black background */
+  color: #abb2bf;
+}
+
+.center-content {
+  text-align: center;
+}
+
+.editor-welcome-text {
+  font-size: 2em;
+  color: #fff; /* Adjust text color if needed against black */
+}
+
+.editor-hint {
+  margin-bottom: 20px;
+}
+
+/* DragDropZone styles (you might have these defined elsewhere) */
+/* Ensure no background is set here if you want the parent to show */
+.drop-zone {
+  border: 2px dashed #61dafb;
+  padding: 40px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+  margin: 20px; /* Keep some margin */
+  color: #abb2bf;
+}
+
+.drop-zone.dragging-over {
+  border-color: #fff;
+}
+
+.drop-zone p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.drop-zone .small-text {
+  font-size: 0.8em;
+  color: #777;
+}
+
+.drop-zone .or-divider {
+  margin: 15px 0;
+  color: #777;
+}
+
+.drop-zone .main-button {
+  background-color: #61dafb;
+  color: #282c34;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 5px;
+  transition: background-color 0.2s ease;
+}
+
+.drop-zone .main-button:hover {
+  opacity: 0.9;
+}
+
+.drop-zone .start-project-button {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.drop-zone .upload-button {
+  background-color: #61dafb;
+  color: #282c34;
+}
